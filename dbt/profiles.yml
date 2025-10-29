@@ -1,0 +1,12 @@
+databricks_profile:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      method: token                    # needed for token auth
+      catalog: workspace               # Unity Catalog
+      schema: insurance_claims         # Your schema
+      host: "{{ env_var('DATABRICKS_HOST') }}"
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      http_path: /sql/1.0/warehouses/2a160fe88bd1510d
+      threads: 1

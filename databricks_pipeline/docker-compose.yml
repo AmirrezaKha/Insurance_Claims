@@ -1,0 +1,77 @@
+version: '3.9'
+
+services:
+  airflow:
+    build: ./airflow
+    container_name: airflow
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__METRICS__STATSD_ON=True
+      - AIRFLOW__METRICS__STATSD_HOST=statsd-exporter
+      - AIRFLOW__METRICS__STATSD_PORT=9125
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__CORE__FERNET_KEY=somefernetkey123
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+    ports:
+      - "8080:8080"
+    command: bash -c "airflow db init && airflow webserver & airflow scheduler"
+    depends_on:
+      - statsd-exporter
+
+  statsd-exporter:
+    image: prom/statsd-exporter
+    container_name: statsd-exporter
+    ports:
+      - "9102:9102"
+      - "9125:9125/udp"
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+
+  databricks-exporter:
+    build: ./databricks_exporter
+    container_name: databricks-exporter
+    environment:
+      - DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+      - DATABRICKS_HOST=${DATABRICKS_HOST}
+    ports:
+      - "8000:8000"
+
+  fastapi:
+    build: ./fastapi
+    container_name: fastapi
+    environment:
+      - DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+      - DATABRICKS_HOST=${DATABRICKS_HOST}
+    ports:
+      - "8001:8001"
+    depends_on:
+      - airflow
+      - databricks-exporter
+
+  dbt:
+    build: ./dbt
+    container_name: dbt
+    volumes:
+      - ./dbt/dbt_project:/usr/app/dbt
+    environment:
+      - DBT_PROFILES_DIR=/usr/app/dbt
+      - DATABRICKS_HOST=${DATABRICKS_HOST}
+      - DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+    command: ["sleep", "infinity"]

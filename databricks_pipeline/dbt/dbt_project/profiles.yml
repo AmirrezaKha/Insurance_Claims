@@ -1,0 +1,11 @@
+databricks:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      catalog: hive_metastore
+      schema: default
+      host: "{{ env_var('DATABRICKS_HOST') }}"
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      http_path: /sql/1.0/endpoints/xxxx
+      threads: 1

@@ -1,0 +1,12 @@
+databricks_profile:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      method: token
+      catalog: workspace               # Unity Catalog
+      schema: insurance_claims        # Your tables' schema
+      host: https://dbc-925e9ccd-e43d.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/2a160fe88bd1510d
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      threads: 1

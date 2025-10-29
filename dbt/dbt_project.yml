@@ -1,0 +1,9 @@
+name: insurance_claims_project
+version: '1.0'
+config-version: 2
+
+profile: databricks_profile   # must match your profiles.yml
+
+models:
+  insurance_claims_project:
+    +materialized: view

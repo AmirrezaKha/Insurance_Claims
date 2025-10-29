@@ -1,0 +1,495 @@
+[0m23:31:27.690350 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x723962497ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7239611bd270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7239611be6e0>]}
+
+
+============================== 23:31:27.702384 | ccd4cdaf-5b7d-449d-8ee5-c18744151281 ==============================
+[0m23:31:27.702384 [info ] [MainThread]: Running with dbt=1.10.13
+[0m23:31:27.704829 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'log_format': 'default', 'no_print': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'profiles_dir': '/root/.dbt', 'write_json': 'True', 'indirect_selection': 'eager', 'quiet': 'False', 'empty': 'False', 'warn_error': 'None', 'static_parser': 'True', 'invocation_command': 'dbt run --profiles-dir /root/.dbt --project-dir /usr/app/dbt', 'log_cache_events': 'False', 'version_check': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'log_path': '/usr/app/dbt/logs'}
+[0m23:31:29.929397 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m23:31:29.931234 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m23:31:29.932936 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m23:31:32.697421 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ccd4cdaf-5b7d-449d-8ee5-c18744151281', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72395f08a650>]}
+[0m23:31:32.789660 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ccd4cdaf-5b7d-449d-8ee5-c18744151281', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x723961a6d3c0>]}
+[0m23:31:32.792057 [info ] [MainThread]: Registered adapter: databricks=1.10.14
+[0m23:31:33.008404 [debug] [MainThread]: checksum: 9f0c81e2574b4ff463f3d16d080df83c6982fc0372c9feeacae0504ac9ea3ffe, vars: {}, profile: , target: , version: 1.10.13
+[0m23:31:33.012808 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m23:31:33.014646 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'ccd4cdaf-5b7d-449d-8ee5-c18744151281', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x723927c69e10>]}
+[0m23:31:35.338942 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ccd4cdaf-5b7d-449d-8ee5-c18744151281', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7239259771c0>]}
+[0m23:31:35.465935 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m23:31:35.475243 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m23:31:35.515731 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ccd4cdaf-5b7d-449d-8ee5-c18744151281', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x723927943490>]}
+[0m23:31:35.517522 [info ] [MainThread]: Found 1 model, 699 macros
+[0m23:31:35.518834 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ccd4cdaf-5b7d-449d-8ee5-c18744151281', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x723927940820>]}
+[0m23:31:35.521729 [info ] [MainThread]: 
+[0m23:31:35.523217 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m23:31:35.524473 [info ] [MainThread]: 
+[0m23:31:35.526235 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m23:31:35.527779 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m23:31:35.529970 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_workspace) - Creating connection
+[0m23:31:35.531113 [debug] [ThreadPool]: Acquiring new databricks connection 'list_workspace'
+[0m23:31:35.544048 [debug] [ThreadPool]: Using databricks connection "list_workspace"
+[0m23:31:35.545466 [debug] [ThreadPool]: On list_workspace: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_workspace"} */
+
+    show databases
+  
+[0m23:31:35.546550 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:31:36.245435 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2c3-e972-1eae-8414-e760fef0cd9d) - Created
+[0m23:31:51.502295 [debug] [ThreadPool]: SQL status: OK in 15.960 seconds
+[0m23:31:51.530798 [debug] [ThreadPool]: Databricks adapter: Cursor(session-id=01f0b2c3-e972-1eae-8414-e760fef0cd9d, command-id=01f0b2c3-e9a0-17b2-873a-8605bbc7a8d1) - Closing
+[0m23:31:51.766369 [debug] [ThreadPool]: On list_workspace: Close
+[0m23:31:51.767755 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2c3-e972-1eae-8414-e760fef0cd9d) - Closing
+[0m23:31:51.929987 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_workspace_insurance_claims) - Creating connection
+[0m23:31:51.931414 [debug] [ThreadPool]: Acquiring new databricks connection 'list_workspace_insurance_claims'
+[0m23:31:51.941328 [debug] [ThreadPool]: Using databricks connection "list_workspace_insurance_claims"
+[0m23:31:51.942942 [debug] [ThreadPool]: On list_workspace_insurance_claims: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_workspace_insurance_claims"} */
+
+    
+SELECT
+  table_name,
+  if(table_type IN ('EXTERNAL', 'MANAGED', 'MANAGED_SHALLOW_CLONE', 'EXTERNAL_SHALLOW_CLONE'), 'table', lower(table_type)) AS table_type,
+  lower(data_source_format) AS file_format,
+  table_owner,
+  if(
+    table_type IN (
+      'EXTERNAL',
+      'MANAGED',
+      'MANAGED_SHALLOW_CLONE',
+      'EXTERNAL_SHALLOW_CLONE'
+    ),
+    lower(table_type),
+    NULL
+  ) AS databricks_table_type
+FROM `system`.`information_schema`.`tables`
+WHERE table_catalog = 'workspace' 
+  AND table_schema = 'insurance_claims'
+
+  
+[0m23:31:51.944019 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:31:52.488097 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2c3-f375-1054-acfd-5b3d21891963) - Created
+[0m23:31:56.938014 [debug] [ThreadPool]: SQL status: OK in 4.990 seconds
+[0m23:31:56.944387 [debug] [ThreadPool]: Databricks adapter: Cursor(session-id=01f0b2c3-f375-1054-acfd-5b3d21891963, command-id=01f0b2c3-f38c-1ae7-9a3d-428ac5882c30) - Closing
+[0m23:31:56.946921 [debug] [ThreadPool]: On list_workspace_insurance_claims: Close
+[0m23:31:56.948335 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2c3-f375-1054-acfd-5b3d21891963) - Closing
+[0m23:31:57.125885 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ccd4cdaf-5b7d-449d-8ee5-c18744151281', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7239257dc640>]}
+[0m23:31:57.139550 [debug] [Thread-1 (]: Began running node model.insurance_claims_project.example_model
+[0m23:31:57.141799 [info ] [Thread-1 (]: 1 of 1 START sql view model insurance_claims.example_model ..................... [RUN]
+[0m23:31:57.143764 [debug] [Thread-1 (]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=model.insurance_claims_project.example_model) - Creating connection
+[0m23:31:57.145099 [debug] [Thread-1 (]: Acquiring new databricks connection 'model.insurance_claims_project.example_model'
+[0m23:31:57.146553 [debug] [Thread-1 (]: Began compiling node model.insurance_claims_project.example_model
+[0m23:31:57.161741 [debug] [Thread-1 (]: Writing injected SQL for node "model.insurance_claims_project.example_model"
+[0m23:31:57.180849 [debug] [Thread-1 (]: Began executing node model.insurance_claims_project.example_model
+[0m23:31:57.205805 [debug] [Thread-1 (]: MATERIALIZING VIEW
+[0m23:31:57.219591 [warn ] [Thread-1 (]: [[33mWARNING[0m]: Use revamped materializations based on separating create and insert.  This allows more performant column comments, as well as new column features.
+You may opt into the new behavior sooner by setting `flags.use_materialization_v2` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m23:31:57.221666 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': 'ccd4cdaf-5b7d-449d-8ee5-c18744151281', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7239246e1c90>]}
+[0m23:31:57.245394 [debug] [Thread-1 (]: Creating view `workspace`.`insurance_claims`.`example_model`
+[0m23:31:57.260635 [debug] [Thread-1 (]: Writing runtime sql for node "model.insurance_claims_project.example_model"
+[0m23:31:57.280668 [debug] [Thread-1 (]: Using databricks connection "model.insurance_claims_project.example_model"
+[0m23:31:57.282049 [debug] [Thread-1 (]: On model.insurance_claims_project.example_model: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "node_id": "model.insurance_claims_project.example_model"} */
+
+  
+  
+  create or replace view `workspace`.`insurance_claims`.`example_model`
+  
+  as (
+    select 1 as id, 'example' as name
+  )
+
+[0m23:31:57.283243 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m23:31:57.789452 [debug] [Thread-1 (]: Databricks adapter: Connection(session-id=01f0b2c3-f68a-1193-93da-eec01cf95a63) - Created
+[0m23:31:58.762891 [debug] [Thread-1 (]: SQL status: OK in 1.480 seconds
+[0m23:31:58.766070 [debug] [Thread-1 (]: Databricks adapter: Cursor(session-id=01f0b2c3-f68a-1193-93da-eec01cf95a63, command-id=01f0b2c3-f6a1-1f89-a4df-bbbede1f7bea) - Closing
+[0m23:31:58.789740 [debug] [Thread-1 (]: Applying tags to relation None
+[0m23:31:58.797550 [debug] [Thread-1 (]: On model.insurance_claims_project.example_model: Close
+[0m23:31:58.799203 [debug] [Thread-1 (]: Databricks adapter: Connection(session-id=01f0b2c3-f68a-1193-93da-eec01cf95a63) - Closing
+[0m23:31:58.960737 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ccd4cdaf-5b7d-449d-8ee5-c18744151281', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x723963a6f6a0>]}
+[0m23:31:58.962843 [info ] [Thread-1 (]: 1 of 1 OK created sql view model insurance_claims.example_model ................ [[32mOK[0m in 1.82s]
+[0m23:31:58.965059 [debug] [Thread-1 (]: Finished running node model.insurance_claims_project.example_model
+[0m23:31:58.968310 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m23:31:58.969979 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m23:31:58.971806 [info ] [MainThread]: 
+[0m23:31:58.973117 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 23.45 seconds (23.45s).
+[0m23:31:58.974815 [debug] [MainThread]: Command end result
+[0m23:31:59.043079 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m23:31:59.050908 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m23:31:59.064768 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt/target/run_results.json
+[0m23:31:59.066106 [info ] [MainThread]: 
+[0m23:31:59.067485 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m23:31:59.068613 [info ] [MainThread]: 
+[0m23:31:59.069898 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m23:31:59.073255 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 32.16717, "process_in_blocks": "1232", "process_kernel_time": 10.899312, "process_mem_max_rss": "242416", "process_out_blocks": "1264", "process_user_time": 8.523714}
+[0m23:31:59.074877 [debug] [MainThread]: Command `dbt run` succeeded at 23:31:59.074724 after 32.17 seconds
+[0m23:31:59.076178 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x723962497ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7239622caec0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x723927941210>]}
+[0m23:31:59.077416 [debug] [MainThread]: Flushing usage events
+[0m23:31:59.551040 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:43:07.072159 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d359a2bb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d35875fe80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d35875d2d0>]}
+
+
+============================== 23:43:07.083361 | c4e3a7ed-5fe8-42db-a087-b92ac1fda1fc ==============================
+[0m23:43:07.083361 [info ] [MainThread]: Running with dbt=1.10.13
+[0m23:43:07.085079 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'log_format': 'default', 'static_parser': 'True', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'empty': 'False', 'partial_parse': 'True', 'write_json': 'True', 'debug': 'False', 'printer_width': '80', 'target_path': 'None', 'quiet': 'False', 'profiles_dir': '/root/.dbt', 'no_print': 'None', 'invocation_command': 'dbt run --profiles-dir /root/.dbt --project-dir /usr/app/dbt', 'warn_error': 'None', 'introspect': 'True', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': '/usr/app/dbt/logs', 'use_colors': 'True', 'log_cache_events': 'False'}
+[0m23:43:08.231185 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m23:43:08.232633 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m23:43:08.234313 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m23:43:09.945629 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c4e3a7ed-5fe8-42db-a087-b92ac1fda1fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d3596dc6d0>]}
+[0m23:43:10.039265 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c4e3a7ed-5fe8-42db-a087-b92ac1fda1fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d358816230>]}
+[0m23:43:10.041361 [info ] [MainThread]: Registered adapter: databricks=1.10.14
+[0m23:43:10.233319 [debug] [MainThread]: checksum: 9f0c81e2574b4ff463f3d16d080df83c6982fc0372c9feeacae0504ac9ea3ffe, vars: {}, profile: , target: , version: 1.10.13
+[0m23:43:15.509817 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m23:43:15.511503 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m23:43:15.553689 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c4e3a7ed-5fe8-42db-a087-b92ac1fda1fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d31ee64130>]}
+[0m23:43:15.684906 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m23:43:15.693460 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m23:43:15.734019 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c4e3a7ed-5fe8-42db-a087-b92ac1fda1fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d31ece4a90>]}
+[0m23:43:15.736338 [info ] [MainThread]: Found 1 model, 699 macros
+[0m23:43:15.738323 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c4e3a7ed-5fe8-42db-a087-b92ac1fda1fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d31ece4af0>]}
+[0m23:43:15.741531 [info ] [MainThread]: 
+[0m23:43:15.743169 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m23:43:15.744416 [info ] [MainThread]: 
+[0m23:43:15.746077 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m23:43:15.747389 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m23:43:15.750347 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_workspace) - Creating connection
+[0m23:43:15.752316 [debug] [ThreadPool]: Acquiring new databricks connection 'list_workspace'
+[0m23:43:15.772102 [debug] [ThreadPool]: Using databricks connection "list_workspace"
+[0m23:43:15.773862 [debug] [ThreadPool]: On list_workspace: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_workspace"} */
+
+    show databases
+  
+[0m23:43:15.775262 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:43:16.452648 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2c5-8b2a-1630-90d3-45c33811907d) - Created
+[0m23:43:32.397153 [debug] [ThreadPool]: SQL status: OK in 16.620 seconds
+[0m23:43:32.419819 [debug] [ThreadPool]: Databricks adapter: Cursor(session-id=01f0b2c5-8b2a-1630-90d3-45c33811907d, command-id=01f0b2c5-8b50-1701-9078-b076672e5af9) - Closing
+[0m23:43:32.688380 [debug] [ThreadPool]: On list_workspace: Close
+[0m23:43:32.690088 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2c5-8b2a-1630-90d3-45c33811907d) - Closing
+[0m23:43:32.856953 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_workspace_insurance_claims) - Creating connection
+[0m23:43:32.858576 [debug] [ThreadPool]: Acquiring new databricks connection 'list_workspace_insurance_claims'
+[0m23:43:32.875412 [debug] [ThreadPool]: Using databricks connection "list_workspace_insurance_claims"
+[0m23:43:32.876940 [debug] [ThreadPool]: On list_workspace_insurance_claims: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_workspace_insurance_claims"} */
+
+    
+SELECT
+  table_name,
+  if(table_type IN ('EXTERNAL', 'MANAGED', 'MANAGED_SHALLOW_CLONE', 'EXTERNAL_SHALLOW_CLONE'), 'table', lower(table_type)) AS table_type,
+  lower(data_source_format) AS file_format,
+  table_owner,
+  if(
+    table_type IN (
+      'EXTERNAL',
+      'MANAGED',
+      'MANAGED_SHALLOW_CLONE',
+      'EXTERNAL_SHALLOW_CLONE'
+    ),
+    lower(table_type),
+    NULL
+  ) AS databricks_table_type
+FROM `system`.`information_schema`.`tables`
+WHERE table_catalog = 'workspace' 
+  AND table_schema = 'insurance_claims'
+
+  
+[0m23:43:32.878104 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:43:33.480472 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2c5-9528-127e-bef2-19eafbd36bc6) - Created
+[0m23:43:37.140344 [debug] [ThreadPool]: SQL status: OK in 4.260 seconds
+[0m23:43:37.146093 [debug] [ThreadPool]: Databricks adapter: Cursor(session-id=01f0b2c5-9528-127e-bef2-19eafbd36bc6, command-id=01f0b2c5-9540-1f9f-8589-e642a86b1273) - Closing
+[0m23:43:37.148606 [debug] [ThreadPool]: On list_workspace_insurance_claims: Close
+[0m23:43:37.150180 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2c5-9528-127e-bef2-19eafbd36bc6) - Closing
+[0m23:43:37.322448 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c4e3a7ed-5fe8-42db-a087-b92ac1fda1fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d31ee910f0>]}
+[0m23:43:37.338899 [debug] [Thread-1 (]: Began running node model.insurance_claims_project.example_model
+[0m23:43:37.340840 [info ] [Thread-1 (]: 1 of 1 START sql view model insurance_claims.example_model ..................... [RUN]
+[0m23:43:37.342589 [debug] [Thread-1 (]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=model.insurance_claims_project.example_model) - Creating connection
+[0m23:43:37.344036 [debug] [Thread-1 (]: Acquiring new databricks connection 'model.insurance_claims_project.example_model'
+[0m23:43:37.345723 [debug] [Thread-1 (]: Began compiling node model.insurance_claims_project.example_model
+[0m23:43:37.358369 [debug] [Thread-1 (]: Writing injected SQL for node "model.insurance_claims_project.example_model"
+[0m23:43:37.370184 [debug] [Thread-1 (]: Began executing node model.insurance_claims_project.example_model
+[0m23:43:37.395310 [debug] [Thread-1 (]: MATERIALIZING VIEW
+[0m23:43:37.410853 [warn ] [Thread-1 (]: [[33mWARNING[0m]: Use revamped materializations based on separating create and insert.  This allows more performant column comments, as well as new column features.
+You may opt into the new behavior sooner by setting `flags.use_materialization_v2` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m23:43:37.412802 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': 'c4e3a7ed-5fe8-42db-a087-b92ac1fda1fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d31ed5f8b0>]}
+[0m23:43:37.431917 [debug] [Thread-1 (]: Creating view `workspace`.`insurance_claims`.`example_model`
+[0m23:43:37.444783 [debug] [Thread-1 (]: Writing runtime sql for node "model.insurance_claims_project.example_model"
+[0m23:43:37.460564 [debug] [Thread-1 (]: Using databricks connection "model.insurance_claims_project.example_model"
+[0m23:43:37.462062 [debug] [Thread-1 (]: On model.insurance_claims_project.example_model: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "node_id": "model.insurance_claims_project.example_model"} */
+
+  
+  
+  create or replace view `workspace`.`insurance_claims`.`example_model`
+  
+  as (
+    select 1 as id, 'example' as name
+  )
+
+[0m23:43:37.463638 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m23:43:37.965518 [debug] [Thread-1 (]: Databricks adapter: Connection(session-id=01f0b2c5-97c7-1bec-83e5-9a906e100c1c) - Created
+[0m23:43:39.211917 [debug] [Thread-1 (]: SQL status: OK in 1.750 seconds
+[0m23:43:39.214136 [debug] [Thread-1 (]: Databricks adapter: Cursor(session-id=01f0b2c5-97c7-1bec-83e5-9a906e100c1c, command-id=01f0b2c5-97dc-1508-acd2-7552be1328d7) - Closing
+[0m23:43:39.229433 [debug] [Thread-1 (]: Applying tags to relation None
+[0m23:43:39.235064 [debug] [Thread-1 (]: On model.insurance_claims_project.example_model: Close
+[0m23:43:39.236740 [debug] [Thread-1 (]: Databricks adapter: Connection(session-id=01f0b2c5-97c7-1bec-83e5-9a906e100c1c) - Closing
+[0m23:43:39.384572 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c4e3a7ed-5fe8-42db-a087-b92ac1fda1fc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d31ee2a590>]}
+[0m23:43:39.386675 [info ] [Thread-1 (]: 1 of 1 OK created sql view model insurance_claims.example_model ................ [[32mOK[0m in 2.04s]
+[0m23:43:39.388586 [debug] [Thread-1 (]: Finished running node model.insurance_claims_project.example_model
+[0m23:43:39.391480 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m23:43:39.392828 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m23:43:39.394089 [info ] [MainThread]: 
+[0m23:43:39.395141 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 23.65 seconds (23.65s).
+[0m23:43:39.396737 [debug] [MainThread]: Command end result
+[0m23:43:39.464440 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m23:43:39.471687 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m23:43:39.485872 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt/target/run_results.json
+[0m23:43:39.487454 [info ] [MainThread]: 
+[0m23:43:39.488764 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m23:43:39.489977 [info ] [MainThread]: 
+[0m23:43:39.491716 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m23:43:39.496157 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 33.20713, "process_in_blocks": "0", "process_kernel_time": 5.052616, "process_mem_max_rss": "233924", "process_out_blocks": "1264", "process_user_time": 7.460617}
+[0m23:43:39.497825 [debug] [MainThread]: Command `dbt run` succeeded at 23:43:39.497653 after 33.21 seconds
+[0m23:43:39.499147 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d359a2bb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d359856440>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78d358816230>]}
+[0m23:43:39.500707 [debug] [MainThread]: Flushing usage events
+[0m23:43:39.937637 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m00:23:32.465632 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x796190847ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79618f57dd80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79618f57e6e0>]}
+
+
+============================== 00:23:32.475273 | 8c58beb8-b3ea-471b-a364-b3c77f70909e ==============================
+[0m00:23:32.475273 [info ] [MainThread]: Running with dbt=1.10.13
+[0m00:23:32.476912 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'static_parser': 'True', 'warn_error': 'None', 'log_cache_events': 'False', 'no_print': 'None', 'write_json': 'True', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run --profiles-dir /root/.dbt --project-dir /usr/app/dbt', 'indirect_selection': 'eager', 'printer_width': '80', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'quiet': 'False', 'profiles_dir': '/root/.dbt', 'fail_fast': 'False', 'log_path': '/usr/app/dbt/logs', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'target_path': 'None', 'empty': 'False', 'cache_selected_only': 'False', 'introspect': 'True'}
+[0m00:23:34.032994 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m00:23:34.034627 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m00:23:34.035735 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m00:23:36.241245 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '8c58beb8-b3ea-471b-a364-b3c77f70909e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79618d8d3b80>]}
+[0m00:23:36.319940 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '8c58beb8-b3ea-471b-a364-b3c77f70909e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79618fe39090>]}
+[0m00:23:36.321833 [info ] [MainThread]: Registered adapter: databricks=1.10.14
+[0m00:23:36.535971 [debug] [MainThread]: checksum: 9f0c81e2574b4ff463f3d16d080df83c6982fc0372c9feeacae0504ac9ea3ffe, vars: {}, profile: , target: , version: 1.10.13
+[0m00:23:36.937690 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m00:23:36.939077 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m00:23:36.977448 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '8c58beb8-b3ea-471b-a364-b3c77f70909e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x796155aec130>]}
+[0m00:23:37.097435 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m00:23:37.104809 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m00:23:37.139932 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '8c58beb8-b3ea-471b-a364-b3c77f70909e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x796155b643a0>]}
+[0m00:23:37.141512 [info ] [MainThread]: Found 1 model, 699 macros
+[0m00:23:37.142811 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '8c58beb8-b3ea-471b-a364-b3c77f70909e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x796155b64400>]}
+[0m00:23:37.145573 [info ] [MainThread]: 
+[0m00:23:37.146915 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m00:23:37.148166 [info ] [MainThread]: 
+[0m00:23:37.149659 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m00:23:37.150799 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m00:23:37.153076 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_workspace) - Creating connection
+[0m00:23:37.154371 [debug] [ThreadPool]: Acquiring new databricks connection 'list_workspace'
+[0m00:23:37.169018 [debug] [ThreadPool]: Using databricks connection "list_workspace"
+[0m00:23:37.170493 [debug] [ThreadPool]: On list_workspace: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_workspace"} */
+
+    show databases
+  
+[0m00:23:37.171703 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m00:23:37.739886 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2cb-2e35-1c4e-abb2-2c6c373a19fc) - Created
+[0m00:23:38.539167 [debug] [ThreadPool]: SQL status: OK in 1.370 seconds
+[0m00:23:38.555494 [debug] [ThreadPool]: Databricks adapter: Cursor(session-id=01f0b2cb-2e35-1c4e-abb2-2c6c373a19fc, command-id=01f0b2cb-2e4e-166a-9227-9ec98b727ec7) - Closing
+[0m00:23:38.557324 [debug] [ThreadPool]: On list_workspace: Close
+[0m00:23:38.558479 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2cb-2e35-1c4e-abb2-2c6c373a19fc) - Closing
+[0m00:23:38.719012 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_workspace_insurance_claims) - Creating connection
+[0m00:23:38.720359 [debug] [ThreadPool]: Acquiring new databricks connection 'list_workspace_insurance_claims'
+[0m00:23:38.735149 [debug] [ThreadPool]: Using databricks connection "list_workspace_insurance_claims"
+[0m00:23:38.736621 [debug] [ThreadPool]: On list_workspace_insurance_claims: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_workspace_insurance_claims"} */
+
+    
+SELECT
+  table_name,
+  if(table_type IN ('EXTERNAL', 'MANAGED', 'MANAGED_SHALLOW_CLONE', 'EXTERNAL_SHALLOW_CLONE'), 'table', lower(table_type)) AS table_type,
+  lower(data_source_format) AS file_format,
+  table_owner,
+  if(
+    table_type IN (
+      'EXTERNAL',
+      'MANAGED',
+      'MANAGED_SHALLOW_CLONE',
+      'EXTERNAL_SHALLOW_CLONE'
+    ),
+    lower(table_type),
+    NULL
+  ) AS databricks_table_type
+FROM `system`.`information_schema`.`tables`
+WHERE table_catalog = 'workspace' 
+  AND table_schema = 'insurance_claims'
+
+  
+[0m00:23:38.737766 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m00:23:39.278013 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2cb-2f1f-1616-9edf-734e3c98ddef) - Created
+[0m00:23:41.990476 [debug] [ThreadPool]: SQL status: OK in 3.250 seconds
+[0m00:23:41.994945 [debug] [ThreadPool]: Databricks adapter: Cursor(session-id=01f0b2cb-2f1f-1616-9edf-734e3c98ddef, command-id=01f0b2cb-2f35-19cd-91b9-f5973e3d6fc6) - Closing
+[0m00:23:41.997165 [debug] [ThreadPool]: On list_workspace_insurance_claims: Close
+[0m00:23:41.998478 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2cb-2f1f-1616-9edf-734e3c98ddef) - Closing
+[0m00:23:42.163792 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '8c58beb8-b3ea-471b-a364-b3c77f70909e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x796155b013f0>]}
+[0m00:23:42.184310 [debug] [Thread-1 (]: Began running node model.insurance_claims_project.example_model
+[0m00:23:42.186479 [info ] [Thread-1 (]: 1 of 1 START sql view model insurance_claims.example_model ..................... [RUN]
+[0m00:23:42.188493 [debug] [Thread-1 (]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=model.insurance_claims_project.example_model) - Creating connection
+[0m00:23:42.189809 [debug] [Thread-1 (]: Acquiring new databricks connection 'model.insurance_claims_project.example_model'
+[0m00:23:42.190989 [debug] [Thread-1 (]: Began compiling node model.insurance_claims_project.example_model
+[0m00:23:42.200623 [debug] [Thread-1 (]: Writing injected SQL for node "model.insurance_claims_project.example_model"
+[0m00:23:42.213467 [debug] [Thread-1 (]: Began executing node model.insurance_claims_project.example_model
+[0m00:23:42.233291 [debug] [Thread-1 (]: MATERIALIZING VIEW
+[0m00:23:42.245392 [warn ] [Thread-1 (]: [[33mWARNING[0m]: Use revamped materializations based on separating create and insert.  This allows more performant column comments, as well as new column features.
+You may opt into the new behavior sooner by setting `flags.use_materialization_v2` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m00:23:42.247079 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': '8c58beb8-b3ea-471b-a364-b3c77f70909e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x796156052d40>]}
+[0m00:23:42.263856 [debug] [Thread-1 (]: Creating view `workspace`.`insurance_claims`.`example_model`
+[0m00:23:42.274662 [debug] [Thread-1 (]: Writing runtime sql for node "model.insurance_claims_project.example_model"
+[0m00:23:42.288338 [debug] [Thread-1 (]: Using databricks connection "model.insurance_claims_project.example_model"
+[0m00:23:42.289823 [debug] [Thread-1 (]: On model.insurance_claims_project.example_model: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "node_id": "model.insurance_claims_project.example_model"} */
+
+  
+  
+  create or replace view `workspace`.`insurance_claims`.`example_model`
+  
+  as (
+    select 1 as id, 'example' as name
+  )
+
+[0m00:23:42.291083 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m00:23:42.825955 [debug] [Thread-1 (]: Databricks adapter: Connection(session-id=01f0b2cb-3132-1073-8713-fced5916adb5) - Created
+[0m00:23:43.745130 [debug] [Thread-1 (]: SQL status: OK in 1.450 seconds
+[0m00:23:43.747445 [debug] [Thread-1 (]: Databricks adapter: Cursor(session-id=01f0b2cb-3132-1073-8713-fced5916adb5, command-id=01f0b2cb-3149-1de4-808a-90819ace9a27) - Closing
+[0m00:23:43.761191 [debug] [Thread-1 (]: Applying tags to relation None
+[0m00:23:44.045445 [debug] [Thread-1 (]: On model.insurance_claims_project.example_model: Close
+[0m00:23:44.046878 [debug] [Thread-1 (]: Databricks adapter: Connection(session-id=01f0b2cb-3132-1073-8713-fced5916adb5) - Closing
+[0m00:23:44.325335 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '8c58beb8-b3ea-471b-a364-b3c77f70909e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x796155aef1c0>]}
+[0m00:23:44.327439 [info ] [Thread-1 (]: 1 of 1 OK created sql view model insurance_claims.example_model ................ [[32mOK[0m in 2.03s]
+[0m00:23:44.329492 [debug] [Thread-1 (]: Finished running node model.insurance_claims_project.example_model
+[0m00:23:44.332407 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m00:23:44.333799 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m00:23:44.335139 [info ] [MainThread]: 
+[0m00:23:44.336287 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 7.19 seconds (7.19s).
+[0m00:23:44.338071 [debug] [MainThread]: Command end result
+[0m00:23:44.400665 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m00:23:44.490950 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m00:23:44.503541 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt/target/run_results.json
+[0m00:23:44.505017 [info ] [MainThread]: 
+[0m00:23:44.506428 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m00:23:44.507617 [info ] [MainThread]: 
+[0m00:23:44.606984 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m00:23:44.818441 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 12.397499, "process_in_blocks": "0", "process_kernel_time": 19.756844, "process_mem_max_rss": "233396", "process_out_blocks": "896", "process_user_time": 13.801879}
+[0m00:23:44.820101 [debug] [MainThread]: Command `dbt run` succeeded at 00:23:44.819950 after 12.47 seconds
+[0m00:23:44.821238 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x796190847ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x796190481570>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79618d8d2410>]}
+[0m00:23:44.822400 [debug] [MainThread]: Flushing usage events
+[0m00:23:45.654655 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:36:31.837200 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cb199dba90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cb18712890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cb18711d80>]}
+
+
+============================== 13:36:31.847056 | ff88f9c7-7276-4f49-ae04-bd1ddd13866f ==============================
+[0m13:36:31.847056 [info ] [MainThread]: Running with dbt=1.10.13
+[0m13:36:31.848614 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'version_check': 'True', 'profiles_dir': '/root/.dbt', 'static_parser': 'True', 'use_experimental_parser': 'False', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': '/usr/app/dbt/logs', 'empty': 'False', 'use_colors': 'True', 'debug': 'False', 'partial_parse': 'True', 'printer_width': '80', 'fail_fast': 'False', 'introspect': 'True', 'no_print': 'None', 'quiet': 'False', 'send_anonymous_usage_stats': 'True', 'indirect_selection': 'eager', 'write_json': 'True', 'warn_error': 'None', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt run --profiles-dir /root/.dbt --project-dir /usr/app/dbt'}
+[0m13:36:32.855001 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m13:36:32.856568 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m13:36:32.857713 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m13:36:34.403642 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ff88f9c7-7276-4f49-ae04-bd1ddd13866f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cb187c5750>]}
+[0m13:36:34.477829 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ff88f9c7-7276-4f49-ae04-bd1ddd13866f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cadf4a7670>]}
+[0m13:36:34.479589 [info ] [MainThread]: Registered adapter: databricks=1.10.14
+[0m13:36:34.658752 [debug] [MainThread]: checksum: 9f0c81e2574b4ff463f3d16d080df83c6982fc0372c9feeacae0504ac9ea3ffe, vars: {}, profile: , target: , version: 1.10.13
+[0m13:36:35.040990 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m13:36:35.042218 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m13:36:35.080956 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ff88f9c7-7276-4f49-ae04-bd1ddd13866f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cadee30130>]}
+[0m13:36:35.208634 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m13:36:35.224889 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m13:36:35.272486 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ff88f9c7-7276-4f49-ae04-bd1ddd13866f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cadecacd90>]}
+[0m13:36:35.273964 [info ] [MainThread]: Found 1 model, 699 macros
+[0m13:36:35.275061 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ff88f9c7-7276-4f49-ae04-bd1ddd13866f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cadecacdf0>]}
+[0m13:36:35.277580 [info ] [MainThread]: 
+[0m13:36:35.278793 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m13:36:35.279974 [info ] [MainThread]: 
+[0m13:36:35.281545 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m13:36:35.282724 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m13:36:35.285200 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_workspace) - Creating connection
+[0m13:36:35.286687 [debug] [ThreadPool]: Acquiring new databricks connection 'list_workspace'
+[0m13:36:35.301521 [debug] [ThreadPool]: Using databricks connection "list_workspace"
+[0m13:36:35.303022 [debug] [ThreadPool]: On list_workspace: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_workspace"} */
+
+    show databases
+  
+[0m13:36:35.304132 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:36:35.959739 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b339-f529-1644-b5a5-f68e22f842d7) - Created
+[0m13:36:51.062012 [debug] [ThreadPool]: SQL status: OK in 15.760 seconds
+[0m13:36:51.078417 [debug] [ThreadPool]: Databricks adapter: Cursor(session-id=01f0b339-f529-1644-b5a5-f68e22f842d7, command-id=01f0b339-f550-1bd4-ae65-aa8f3df91fc9) - Closing
+[0m13:36:51.346538 [debug] [ThreadPool]: On list_workspace: Close
+[0m13:36:51.348022 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b339-f529-1644-b5a5-f68e22f842d7) - Closing
+[0m13:36:51.515506 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_workspace_insurance_claims) - Creating connection
+[0m13:36:51.517034 [debug] [ThreadPool]: Acquiring new databricks connection 'list_workspace_insurance_claims'
+[0m13:36:51.531807 [debug] [ThreadPool]: Using databricks connection "list_workspace_insurance_claims"
+[0m13:36:51.533513 [debug] [ThreadPool]: On list_workspace_insurance_claims: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_workspace_insurance_claims"} */
+
+    
+SELECT
+  table_name,
+  if(table_type IN ('EXTERNAL', 'MANAGED', 'MANAGED_SHALLOW_CLONE', 'EXTERNAL_SHALLOW_CLONE'), 'table', lower(table_type)) AS table_type,
+  lower(data_source_format) AS file_format,
+  table_owner,
+  if(
+    table_type IN (
+      'EXTERNAL',
+      'MANAGED',
+      'MANAGED_SHALLOW_CLONE',
+      'EXTERNAL_SHALLOW_CLONE'
+    ),
+    lower(table_type),
+    NULL
+  ) AS databricks_table_type
+FROM `system`.`information_schema`.`tables`
+WHERE table_catalog = 'workspace' 
+  AND table_schema = 'insurance_claims'
+
+  
+[0m13:36:51.534671 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:36:52.096528 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b339-fedc-185b-8a18-7fe2b80a28f1) - Created
+[0m13:36:55.792716 [debug] [ThreadPool]: SQL status: OK in 4.260 seconds
+[0m13:36:55.796824 [debug] [ThreadPool]: Databricks adapter: Cursor(session-id=01f0b339-fedc-185b-8a18-7fe2b80a28f1, command-id=01f0b339-fef6-1c97-a607-06488d889b29) - Closing
+[0m13:36:55.798920 [debug] [ThreadPool]: On list_workspace_insurance_claims: Close
+[0m13:36:55.800135 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b339-fedc-185b-8a18-7fe2b80a28f1) - Closing
+[0m13:36:55.984135 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ff88f9c7-7276-4f49-ae04-bd1ddd13866f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cadee5d9f0>]}
+[0m13:36:55.997649 [debug] [Thread-1 (]: Began running node model.insurance_claims_project.example_model
+[0m13:36:55.999622 [info ] [Thread-1 (]: 1 of 1 START sql view model insurance_claims.example_model ..................... [RUN]
+[0m13:36:56.001361 [debug] [Thread-1 (]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=model.insurance_claims_project.example_model) - Creating connection
+[0m13:36:56.002516 [debug] [Thread-1 (]: Acquiring new databricks connection 'model.insurance_claims_project.example_model'
+[0m13:36:56.003644 [debug] [Thread-1 (]: Began compiling node model.insurance_claims_project.example_model
+[0m13:36:56.012948 [debug] [Thread-1 (]: Writing injected SQL for node "model.insurance_claims_project.example_model"
+[0m13:36:56.030116 [debug] [Thread-1 (]: Began executing node model.insurance_claims_project.example_model
+[0m13:36:56.049203 [debug] [Thread-1 (]: MATERIALIZING VIEW
+[0m13:36:56.061064 [warn ] [Thread-1 (]: [[33mWARNING[0m]: Use revamped materializations based on separating create and insert.  This allows more performant column comments, as well as new column features.
+You may opt into the new behavior sooner by setting `flags.use_materialization_v2` to `True` in `dbt_project.yml`.
+Visit https://docs.getdbt.com/reference/global-configs/behavior-changes for more information.
+[0m13:36:56.062707 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'BehaviorChangeEvent', 'label': 'ff88f9c7-7276-4f49-ae04-bd1ddd13866f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72caded2bac0>]}
+[0m13:36:56.079161 [debug] [Thread-1 (]: Creating view `workspace`.`insurance_claims`.`example_model`
+[0m13:36:56.089294 [debug] [Thread-1 (]: Writing runtime sql for node "model.insurance_claims_project.example_model"
+[0m13:36:56.107099 [debug] [Thread-1 (]: Using databricks connection "model.insurance_claims_project.example_model"
+[0m13:36:56.108492 [debug] [Thread-1 (]: On model.insurance_claims_project.example_model: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "node_id": "model.insurance_claims_project.example_model"} */
+
+  
+  
+  create or replace view `workspace`.`insurance_claims`.`example_model`
+  
+  as (
+    select 1 as id, 'example' as name
+  )
+
+[0m13:36:56.109755 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m13:36:56.652534 [debug] [Thread-1 (]: Databricks adapter: Connection(session-id=01f0b33a-018f-1e78-9794-94f8ead1f7dc) - Created
+[0m13:36:57.811416 [debug] [Thread-1 (]: SQL status: OK in 1.700 seconds
+[0m13:36:57.813434 [debug] [Thread-1 (]: Databricks adapter: Cursor(session-id=01f0b33a-018f-1e78-9794-94f8ead1f7dc, command-id=01f0b33a-01ab-1065-96e0-cf383ba05810) - Closing
+[0m13:36:57.827075 [debug] [Thread-1 (]: Applying tags to relation None
+[0m13:36:57.833223 [debug] [Thread-1 (]: On model.insurance_claims_project.example_model: Close
+[0m13:36:57.834634 [debug] [Thread-1 (]: Databricks adapter: Connection(session-id=01f0b33a-018f-1e78-9794-94f8ead1f7dc) - Closing
+[0m13:36:57.992144 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ff88f9c7-7276-4f49-ae04-bd1ddd13866f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cadee49750>]}
+[0m13:36:57.994038 [info ] [Thread-1 (]: 1 of 1 OK created sql view model insurance_claims.example_model ................ [[32mOK[0m in 1.99s]
+[0m13:36:57.995743 [debug] [Thread-1 (]: Finished running node model.insurance_claims_project.example_model
+[0m13:36:57.998236 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m13:36:57.999397 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m13:36:58.000727 [info ] [MainThread]: 
+[0m13:36:58.001874 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 22.72 seconds (22.72s).
+[0m13:36:58.003499 [debug] [MainThread]: Command end result
+[0m13:36:58.068148 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m13:36:58.075283 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m13:36:58.100173 [debug] [MainThread]: Wrote artifact RunExecutionResult to /usr/app/dbt/target/run_results.json
+[0m13:36:58.101482 [info ] [MainThread]: 
+[0m13:36:58.102746 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m13:36:58.103752 [info ] [MainThread]: 
+[0m13:36:58.105112 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m13:36:58.108083 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 26.415615, "process_in_blocks": "249416", "process_kernel_time": 1.165356, "process_mem_max_rss": "231604", "process_out_blocks": "1192", "process_user_time": 5.027566}
+[0m13:36:58.109645 [debug] [MainThread]: Command `dbt run` succeeded at 13:36:58.109489 after 26.42 seconds
+[0m13:36:58.110850 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cb199dba90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cb19691720>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x72cadf4a7670>]}
+[0m13:36:58.112091 [debug] [MainThread]: Flushing usage events

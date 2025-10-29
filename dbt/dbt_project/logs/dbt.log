@@ -1,0 +1,150 @@
+[0m15:47:01.634353 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdef6697af0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdef53c7e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdef53c5930>]}
+
+
+============================== 15:47:01.643683 | ab33b2f9-1b0d-4063-8cb1-d1d339c1592d ==============================
+[0m15:47:01.643683 [info ] [MainThread]: Running with dbt=1.10.13
+[0m15:47:01.645195 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt run --profiles-dir /usr/app/dbt', 'log_format': 'default', 'cache_selected_only': 'False', 'partial_parse': 'True', 'empty': 'False', 'log_path': '/usr/app/dbt/logs', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'fail_fast': 'False', 'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'no_print': 'None', 'log_cache_events': 'False', 'write_json': 'True', 'profiles_dir': '/usr/app/dbt', 'debug': 'False', 'version_check': 'True', 'static_parser': 'True', 'quiet': 'False', 'indirect_selection': 'eager', 'printer_width': '80', 'introspect': 'True', 'use_experimental_parser': 'False'}
+[0m15:47:02.618233 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m15:47:02.619753 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m15:47:02.621143 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m15:47:04.046337 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ab33b2f9-1b0d-4063-8cb1-d1d339c1592d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdef7f7ba90>]}
+[0m15:47:04.122916 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ab33b2f9-1b0d-4063-8cb1-d1d339c1592d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdef548b0a0>]}
+[0m15:47:04.124789 [info ] [MainThread]: Registered adapter: databricks=1.10.14
+[0m15:47:04.347726 [debug] [MainThread]: checksum: 9f0c81e2574b4ff463f3d16d080df83c6982fc0372c9feeacae0504ac9ea3ffe, vars: {}, profile: , target: , version: 1.10.13
+[0m15:47:04.351563 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m15:47:04.352730 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'ab33b2f9-1b0d-4063-8cb1-d1d339c1592d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdebbed9cf0>]}
+[0m15:47:06.454417 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ab33b2f9-1b0d-4063-8cb1-d1d339c1592d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdeb99dcdf0>]}
+[0m15:47:06.570677 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m15:47:06.578174 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m15:47:06.608009 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ab33b2f9-1b0d-4063-8cb1-d1d339c1592d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdeb98c79a0>]}
+[0m15:47:06.609594 [info ] [MainThread]: Found 1 model, 699 macros
+[0m15:47:06.610843 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ab33b2f9-1b0d-4063-8cb1-d1d339c1592d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdeb98c7940>]}
+[0m15:47:06.613521 [info ] [MainThread]: 
+[0m15:47:06.614717 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m15:47:06.615957 [info ] [MainThread]: 
+[0m15:47:06.617545 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m15:47:06.618973 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m15:47:06.621810 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_hive_metastore) - Creating connection
+[0m15:47:06.623437 [debug] [ThreadPool]: Acquiring new databricks connection 'list_hive_metastore'
+[0m15:47:06.636675 [debug] [ThreadPool]: Using databricks connection "list_hive_metastore"
+[0m15:47:06.638212 [debug] [ThreadPool]: On list_hive_metastore: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks", "target_name": "dev", "connection_name": "list_hive_metastore"} */
+
+    show databases
+  
+[0m15:47:06.639265 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:01:09.787459 [error] [ThreadPool]: databricks-sql-connector adapter: ThriftBackend.attempt_request: Exception: %s
+[0m16:01:09.792196 [error] [ThreadPool]: Databricks adapter: Connection(session-id=Unknown) - Exception while trying to create connection: Error during request to server. Retry request would exceed Retry policy max retry duration of 900.0 seconds
+Error properties: attempt=1/30, bounded-retry-delay=None, elapsed-seconds=843.1360523700714/900.0, error-message=, http-code=None, method=OpenSession, no-retry-reason=non-retryable error, original-exception=Retry request would exceed Retry policy max retry duration of 900.0 seconds, query-id=None, session-id=None
+[0m16:01:09.794285 [debug] [ThreadPool]: Databricks adapter: Exception while trying to execute query
+/* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks", "target_name": "dev", "connection_name": "list_hive_metastore"} */
+
+    show databases
+  
+: Database Error
+  Error during request to server. Retry request would exceed Retry policy max retry duration of 900.0 seconds
+[0m16:01:09.796544 [debug] [ThreadPool]: Databricks adapter: Exception while trying to execute query
+macro list_schemas
+: Database Error
+  Database Error
+    Error during request to server. Retry request would exceed Retry policy max retry duration of 900.0 seconds
+[0m16:01:09.799135 [debug] [ThreadPool]: On list_hive_metastore: No close available on handle
+[0m16:01:09.804126 [info ] [MainThread]: 
+[0m16:01:09.806000 [info ] [MainThread]: Finished running  in 0 hours 14 minutes and 3.19 seconds (843.19s).
+[0m16:01:09.808813 [error] [MainThread]: Encountered an error:
+Database Error
+  Database Error
+    Database Error
+      Error during request to server. Retry request would exceed Retry policy max retry duration of 900.0 seconds
+[0m16:01:09.816891 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 848.2915, "process_in_blocks": "237232", "process_kernel_time": 1.272628, "process_mem_max_rss": "231508", "process_out_blocks": "1440", "process_user_time": 6.382967}
+[0m16:01:09.819291 [debug] [MainThread]: Command `dbt run` failed at 16:01:09.818993 after 848.29 seconds
+[0m16:01:09.821658 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdef6697af0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdeb9996ef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bdeb9997cd0>]}
+[0m16:01:09.823864 [debug] [MainThread]: Flushing usage events
+[0m16:01:10.272937 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:14:20.097312 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775b70553a00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775b6f28c580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775b6f28cf10>]}
+
+
+============================== 19:14:20.108123 | 0a38678a-723d-4a09-8d0e-acea4f30941e ==============================
+[0m19:14:20.108123 [info ] [MainThread]: Running with dbt=1.10.13
+[0m19:14:20.109718 [debug] [MainThread]: running dbt with arguments {'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'debug': 'False', 'log_cache_events': 'False', 'invocation_command': 'dbt run --profiles-dir /usr/app/dbt', 'no_print': 'None', 'partial_parse': 'True', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'write_json': 'True', 'target_path': 'None', 'printer_width': '80', 'quiet': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'profiles_dir': '/usr/app/dbt', 'static_parser': 'True', 'log_path': '/usr/app/dbt/logs', 'log_format': 'default', 'use_colors': 'True', 'indirect_selection': 'eager', 'version_check': 'True', 'introspect': 'True'}
+[0m19:14:20.119228 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'databricks_profile'
+[0m19:14:20.122105 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.11364963, "process_in_blocks": "53616", "process_kernel_time": 0.905445, "process_mem_max_rss": "95416", "process_out_blocks": "1080", "process_user_time": 1.685583}
+[0m19:14:20.123772 [debug] [MainThread]: Command `dbt run` failed at 19:14:20.123557 after 0.12 seconds
+[0m19:14:20.124966 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775b70553a00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775b6f14e140>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x775b6f14db40>]}
+[0m19:14:20.126222 [debug] [MainThread]: Flushing usage events
+[0m19:14:20.565213 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:15:00.650456 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71078226f730>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x710781238dc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x710781239f90>]}
+
+
+============================== 19:15:00.654571 | 45183752-8d03-4b61-a287-95e1b0776c30 ==============================
+[0m19:15:00.654571 [info ] [MainThread]: Running with dbt=1.10.13
+[0m19:15:00.655955 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'cache_selected_only': 'False', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'target_path': 'None', 'version_check': 'True', 'empty': 'False', 'write_json': 'True', 'invocation_command': 'dbt run --profiles-dir /usr/app/dbt', 'printer_width': '80', 'fail_fast': 'False', 'use_colors': 'True', 'log_path': '/usr/app/dbt/logs', 'static_parser': 'True', 'profiles_dir': '/usr/app/dbt', 'warn_error': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m19:15:00.667290 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'databricks_profile'
+[0m19:15:00.669590 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.107046716, "process_in_blocks": "0", "process_kernel_time": 0.231158, "process_mem_max_rss": "94212", "process_out_blocks": "0", "process_user_time": 1.442746}
+[0m19:15:00.671069 [debug] [MainThread]: Command `dbt run` failed at 19:15:00.670922 after 0.11 seconds
+[0m19:15:00.672237 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71078226f730>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x710781239540>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7107812a11b0>]}
+[0m19:15:00.673358 [debug] [MainThread]: Flushing usage events
+[0m19:15:01.102308 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:56:52.920591 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73808c0d7ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73808ae13e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73808ae12d40>]}
+
+
+============================== 19:56:52.932700 | 08d8f0ff-d9f6-45b8-8951-68124fccc168 ==============================
+[0m19:56:52.932700 [info ] [MainThread]: Running with dbt=1.10.13
+[0m19:56:52.934505 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'cache_selected_only': 'False', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'quiet': 'False', 'log_path': '/usr/app/dbt/logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'target_path': 'None', 'use_experimental_parser': 'False', 'static_parser': 'True', 'no_print': 'None', 'log_format': 'default', 'write_json': 'True', 'invocation_command': 'dbt run --profiles-dir /usr/app/dbt', 'warn_error': 'None', 'profiles_dir': '/usr/app/dbt', 'debug': 'False', 'empty': 'False', 'indirect_selection': 'eager', 'use_colors': 'True', 'version_check': 'True', 'log_cache_events': 'False'}
+[0m19:56:54.101545 [debug] [MainThread]: Spark adapter: Setting pyhive.hive logging to ERROR
+[0m19:56:54.103067 [debug] [MainThread]: Spark adapter: Setting thrift.transport logging to ERROR
+[0m19:56:54.104141 [debug] [MainThread]: Spark adapter: Setting thrift.protocol logging to ERROR
+[0m19:56:55.498760 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '08d8f0ff-d9f6-45b8-8951-68124fccc168', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73808d987c70>]}
+[0m19:56:55.575719 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '08d8f0ff-d9f6-45b8-8951-68124fccc168', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73808bd67cd0>]}
+[0m19:56:55.577562 [info ] [MainThread]: Registered adapter: databricks=1.10.14
+[0m19:56:55.755037 [debug] [MainThread]: checksum: 9f0c81e2574b4ff463f3d16d080df83c6982fc0372c9feeacae0504ac9ea3ffe, vars: {}, profile: , target: , version: 1.10.13
+[0m19:56:55.960718 [info ] [MainThread]: Unable to do partial parsing because profile has changed
+[0m19:56:55.962212 [info ] [MainThread]: Unable to do partial parsing because a project dependency has been added
+[0m19:56:55.963553 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '08d8f0ff-d9f6-45b8-8951-68124fccc168', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73808b6f9ff0>]}
+[0m19:56:57.834268 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '08d8f0ff-d9f6-45b8-8951-68124fccc168', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x738051485b10>]}
+[0m19:56:57.941874 [debug] [MainThread]: Wrote artifact WritableManifest to /usr/app/dbt/target/manifest.json
+[0m19:56:57.949120 [debug] [MainThread]: Wrote artifact SemanticManifest to /usr/app/dbt/target/semantic_manifest.json
+[0m19:56:57.975586 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '08d8f0ff-d9f6-45b8-8951-68124fccc168', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x738050172b00>]}
+[0m19:56:57.976970 [info ] [MainThread]: Found 1 model, 699 macros
+[0m19:56:57.978151 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '08d8f0ff-d9f6-45b8-8951-68124fccc168', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7380514e8220>]}
+[0m19:56:57.980950 [info ] [MainThread]: 
+[0m19:56:57.982354 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m19:56:57.983753 [info ] [MainThread]: 
+[0m19:56:57.985208 [debug] [MainThread]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=master) - Creating connection
+[0m19:56:57.986437 [debug] [MainThread]: Acquiring new databricks connection 'master'
+[0m19:56:57.988786 [debug] [ThreadPool]: Databricks adapter: DatabricksDBTConnection(session-id=None, name=list_hive_metastore) - Creating connection
+[0m19:56:57.990240 [debug] [ThreadPool]: Acquiring new databricks connection 'list_hive_metastore'
+[0m19:56:58.004095 [debug] [ThreadPool]: Using databricks connection "list_hive_metastore"
+[0m19:56:58.005812 [debug] [ThreadPool]: On list_hive_metastore: /* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_hive_metastore"} */
+
+    show databases
+  
+[0m19:56:58.007105 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:56:58.720400 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2a5-ee17-19d9-bc9b-99af321f0e7c) - Created
+[0m19:57:08.837022 [debug] [ThreadPool]: Databricks adapter: Exception while trying to execute query
+/* {"app": "dbt", "dbt_version": "1.10.13", "dbt_databricks_version": "1.10.14", "databricks_sql_connector_version": "4.0.5", "profile_name": "databricks_profile", "target_name": "dev", "connection_name": "list_hive_metastore"} */
+
+    show databases
+  
+: [UC_HIVE_METASTORE_DISABLED_EXCEPTION] The operation attempted to use Hive Metastore for schema `hive_metastore`.`default`, which is disabled due to legacy access being turned off in your account or workspace. Please double check the default catalog in current session and default namespace setting. If you need to access the Hive Metastore, please ask your admin to set up Hive Metastore federation through Unity Catalog. SQLSTATE: 0A000
+Error properties: diagnostic-info=None, operation-id=01f0b2a5-ee48-119e-8631-78beb0d1af42
+[0m19:57:08.839024 [debug] [ThreadPool]: Databricks adapter: Exception while trying to execute query
+macro list_schemas
+: Database Error
+  [UC_HIVE_METASTORE_DISABLED_EXCEPTION] The operation attempted to use Hive Metastore for schema `hive_metastore`.`default`, which is disabled due to legacy access being turned off in your account or workspace. Please double check the default catalog in current session and default namespace setting. If you need to access the Hive Metastore, please ask your admin to set up Hive Metastore federation through Unity Catalog. SQLSTATE: 0A000
+[0m19:57:08.840433 [debug] [ThreadPool]: On list_hive_metastore: Close
+[0m19:57:08.841559 [debug] [ThreadPool]: Databricks adapter: Connection(session-id=01f0b2a5-ee17-19d9-bc9b-99af321f0e7c) - Closing
+[0m19:57:09.038807 [info ] [MainThread]: 
+[0m19:57:09.040566 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 11.05 seconds (11.05s).
+[0m19:57:09.041950 [error] [MainThread]: Encountered an error:
+Database Error
+  Database Error
+    [UC_HIVE_METASTORE_DISABLED_EXCEPTION] The operation attempted to use Hive Metastore for schema `hive_metastore`.`default`, which is disabled due to legacy access being turned off in your account or workspace. Please double check the default catalog in current session and default namespace setting. If you need to access the Hive Metastore, please ask your admin to set up Hive Metastore federation through Unity Catalog. SQLSTATE: 0A000
+[0m19:57:09.053863 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 16.223513, "process_in_blocks": "1320", "process_kernel_time": 2.629451, "process_mem_max_rss": "234012", "process_out_blocks": "1440", "process_user_time": 6.830988}
+[0m19:57:09.055298 [debug] [MainThread]: Command `dbt run` failed at 19:57:09.055169 after 16.23 seconds
+[0m19:57:09.056388 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73808c0d7ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7380513d2410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7380513d0520>]}
+[0m19:57:09.057485 [debug] [MainThread]: Flushing usage events
+[0m19:57:09.461430 [debug] [MainThread]: An error was encountered while trying to flush usage events

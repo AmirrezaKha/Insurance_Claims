@@ -1,0 +1,169 @@
+version: '3.9'
+
+x-airflow-common:
+  &airflow-common
+  build: ./airflow
+  image: ${AIRFLOW_IMAGE_NAME:-airflowthesis:latest}
+  environment:
+    &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW__CORE__FERNET_KEY}
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-airflow}:${POSTGRES_PASSWORD:-airflow}@postgres/${POSTGRES_DB:-airflow}
+    # Databricks connection for Airflow
+    AIRFLOW_CONN_DATABRICKS_DEFAULT: databricks://token:${DATABRICKS_TOKEN}@${DATABRICKS_HOST}?http_path=<HTTP_PATH>&cluster_id=<CLUSTER_ID>
+  volumes:
+    - ./airflow/dags:/opt/airflow/dags
+    - ./airflow/logs:/opt/airflow/logs
+    - ./airflow/plugins:/opt/airflow/plugins
+    - ./airflow/data:/opt/airflow/data
+    - ./airflow/libraries:/opt/airflow/libraries
+  user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
+  depends_on:
+    postgres:
+      condition: service_healthy
+  env_file:
+    - .env
+services:
+  # ---------------- PostgreSQL for Airflow ----------------
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-airflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-airflow}
+      POSTGRES_DB: ${POSTGRES_DB:-airflow}
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER:-airflow}"]
+      interval: 5s
+      retries: 5
+    restart: always
+    env_file:
+      - .env
+
+  # ---------------- Airflow Webserver ----------------
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+    env_file:
+      - .env
+
+  # ---------------- Airflow Scheduler ----------------
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    restart: always
+    env_file:
+      - .env
+
+  # ---------------- Airflow Init ----------------
+  airflow-init:
+    <<: *airflow-common
+    command: version
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_UPGRADE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-admin}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-admin}
+    env_file:
+      - .env
+
+  # ---------------- StatsD Exporter ----------------
+  statsd-exporter:
+    image: prom/statsd-exporter
+    container_name: statsd-exporter
+    ports:
+      - "9102:9102"
+      - "9125:9125/udp"
+
+  # ---------------- Prometheus ----------------
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  # ---------------- Grafana ----------------
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=false
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    env_file:
+      - .env
+
+  # ---------------- Databricks Exporter ----------------
+  databricks-exporter:
+    build: ./databricks_exporter
+    container_name: databricks-exporter
+    environment:
+      - DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+      - DATABRICKS_HOST=${DATABRICKS_HOST}
+    ports:
+      - "8000:8000"
+    depends_on:
+      - airflow-webserver
+
+  # ---------------- FastAPI ----------------
+  fastapi:
+    build: ./fastapi
+    container_name: fastapi
+    environment:
+      - DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+      - DATABRICKS_HOST=${DATABRICKS_HOST}
+      - DBT_PROFILES_DIR=/root/.dbt
+    ports:
+      - "8001:8001"
+    depends_on:
+      - airflow-webserver
+      - databricks-exporter
+    volumes:
+      - ./dbt:/usr/app/dbt         # mount dbt project here
+      - ./dbt/profiles.yml:/root/.dbt/profiles.yml  # mount profile separately
+    env_file:
+      - .env
+
+  # ---------------- dbt ----------------
+  dbt:
+    build: ./dbt
+    container_name: dbt
+    volumes:
+      # - ./dbt/dbt_project:/usr/app
+      # - ./dbt/profiles.yml:/root/.dbt/profiles.yml
+      - ./dbt:/usr/app/dbt
+      - ./dbt/profiles.yml:/root/.dbt/profiles.yml
+    environment:
+      - DBT_PROFILES_DIR=/root/.dbt
+      - DATABRICKS_HOST=${DATABRICKS_HOST}
+      - DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+    command: ["sleep", "infinity"]
+    env_file:
+      - .env
+
+volumes:
+  postgres-db-volume:
+  
