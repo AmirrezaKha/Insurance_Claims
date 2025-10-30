@@ -1,33 +1,33 @@
 import React, { useState } from "react";
 
 const UploadForm = () => {
-  const [file, setFile] = useState(null);
-  const [message, setMessage] = useState("");
+  const [fileName, setFileName] = useState("No file chosen");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!file) return setMessage("Please select a file.");
-
-    const formData = new FormData();
-    formData.append("file", file);
-
-    const res = await fetch("http://localhost:8000/upload", {
-      method: "POST",
-      body: formData,
-    });
-
-    if (res.ok) setMessage("✅ File uploaded successfully!");
-    else setMessage("❌ Upload failed.");
+  const handleFileChange = (e) => {
+    setFileName(e.target.files[0]?.name || "No file chosen");
   };
 
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Upload CSV File</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} className="border p-2" />
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">Upload</button>
+    <div className="p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-md">
+      <h2 className="text-xl font-bold mb-4 text-blue-700">Upload CSV File</h2>
+      <form className="flex flex-col space-y-4">
+        <label className="flex flex-col items-start">
+          <span className="font-medium text-gray-700">Choose CSV</span>
+          <input
+            type="file"
+            accept=".csv"
+            onChange={handleFileChange}
+            className="mt-2 p-2 border rounded-lg bg-white hover:border-blue-400"
+          />
+          <span className="mt-1 text-gray-500 text-sm">{fileName}</span>
+        </label>
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+        >
+          Upload
+        </button>
       </form>
-      {message && <p className="mt-3">{message}</p>}
     </div>
   );
 };

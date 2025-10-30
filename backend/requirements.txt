@@ -5,3 +5,5 @@ pandas
 databricks-sql-connector
 prometheus-fastapi-instrumentator
 prometheus-client
+python-multipart
+mlflow

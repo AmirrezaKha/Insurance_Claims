@@ -1,35 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const MlflowPanel = () => {
-  const [models, setModels] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:8000/mlflow/models")
-      .then((res) => res.json())
-      .then((data) => setModels(data.models || []));
-  }, []);
-
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">MLflow Models</h2>
-      <table className="w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="border p-2">Name</th>
-            <th className="border p-2">Version</th>
-            <th className="border p-2">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {models.map((m, i) => (
-            <tr key={i}>
-              <td className="border p-2">{m.name}</td>
-              <td className="border p-2">{m.version}</td>
-              <td className="border p-2">{m.status}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="p-6 bg-purple-50 rounded-xl shadow-md">
+      <h2 className="text-xl font-bold mb-4 text-purple-700">MLflow Panel</h2>
+      <p className="text-gray-700 mb-4">
+        Monitor experiments, metrics, and models.
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+          View Experiments
+        </button>
+        <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+          Track Metrics
+        </button>
+      </div>
     </div>
   );
 };

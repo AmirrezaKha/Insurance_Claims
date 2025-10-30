@@ -1,4 +1,5 @@
-from fastapi import APIRouter, HTMLResponse
+from fastapi import APIRouter
+from fastapi.responses import HTMLResponse
 from app.core.dbt_utils import run_dbt_command
 from app.services.databricks_service import execute_sql
 from app.core.config import settings
