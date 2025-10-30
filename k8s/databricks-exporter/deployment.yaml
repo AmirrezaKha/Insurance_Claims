@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: databricks-exporter
+  namespace: data-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: databricks-exporter
+  template:
+    metadata:
+      labels:
+        app: databricks-exporter
+    spec:
+      containers:
+      - name: databricks-exporter
+        image: databricks-exporter:latest
+        ports:
+          - containerPort: 8000
+        env:
+          - name: DATABRICKS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: databricks-secrets
+                key: DATABRICKS_TOKEN
+          - name: DATABRICKS_HOST
+            valueFrom:
+              secretKeyRef:
+                name: databricks-secrets
+                key: DATABRICKS_HOST

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi
+  namespace: data-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      containers:
+      - name: fastapi
+        image: fastapi:latest
+        env:
+          - name: DATABRICKS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: databricks-secrets
+                key: DATABRICKS_TOKEN
+          - name: DATABRICKS_HOST
+            valueFrom:
+              secretKeyRef:
+                name: databricks-secrets
+                key: DATABRICKS_HOST
+        ports:
+          - containerPort: 8001

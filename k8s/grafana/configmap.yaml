@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+data:
+  airflow-dashboard.json: |
+    {
+      "title": "Airflow Metrics",
+      "panels": [ ... ]
+    }
