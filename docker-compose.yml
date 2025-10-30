@@ -166,4 +166,18 @@ services:
 
 volumes:
   postgres-db-volume:
+
+  # ---------------- Frontend (React + Vite) ----------------
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - fastapi
+    environment:
+      - VITE_API_URL=http://localhost:8001
+    volumes:
+      - ./frontend:/app
+    command: ["npm", "run", "dev"]
   
