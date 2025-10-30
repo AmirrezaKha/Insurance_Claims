@@ -10,6 +10,7 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-airflow}:${POSTGRES_PASSWORD:-airflow}@postgres/${POSTGRES_DB:-airflow}
     AIRFLOW_CONN_DATABRICKS_DEFAULT: databricks://token:${DATABRICKS_TOKEN}@${DATABRICKS_HOST}?http_path=<HTTP_PATH>&cluster_id=<CLUSTER_ID>
+
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/logs:/opt/airflow/logs

@@ -1,27 +1,43 @@
 import React, { useState } from "react";
-import UploadForm from "./components/UploadForm.jsx";
 import DbtPanel from "./components/DbtPanel.jsx";
-import MlflowPanel from "./components/MlflowPanel.jsx";
+import TablesPanel from "./components/TablesPanel.jsx";
 import DatabricksQuery from "./components/DatabricksQuery.jsx";
+import DatabricksJobsPanel from "./components/DatabricksJobsPanel.jsx";
+import AirflowPanel from "./components/AirflowPanel.jsx";
+import ClaimSummaryPanel from "./components/ClaimSummaryPanel.jsx";
+
 
 const App = () => {
-  const [activePanel, setActivePanel] = useState("upload");
+  const [activePanel, setActivePanel] = useState("dbt");
 
   const renderPanel = () => {
     switch (activePanel) {
-      case "upload": return <UploadForm />;
-      case "dbt": return <DbtPanel />;
-      case "mlflow": return <MlflowPanel />;
-      case "databricks": return <DatabricksQuery />;
-      default: return <UploadForm />;
+      // case "upload":
+      //   return <UploadForm />;
+      case "dbt":
+        return <DbtPanel />;
+      case "tables":
+        return <TablesPanel />;
+      case "databricks":
+        return <DatabricksQuery />;
+      case "jobs":
+        return <DatabricksJobsPanel />;
+      case "claimsummary":
+        return <ClaimSummaryPanel />;
+      default:
+        return <DbtPanel />;
+      // case "airflow":
+      //   return <AirflowPanel />;
     }
   };
 
   const buttons = [
-    { key: "upload", label: "Upload", color: "blue" },
+    // { key: "upload", label: "Upload", color: "blue" }, // commented out
     { key: "dbt", label: "dbt", color: "green" },
-    { key: "mlflow", label: "MLflow", color: "purple" },
+    { key: "tables", label: "Tables", color: "purple" },
     { key: "databricks", label: "Databricks", color: "orange" },
+    { key: "jobs", label: "Jobs", color: "yellow" },
+    { key: "claimsummary", label: "Claim Summary Panel", color: "pink" },
   ];
 
   const colorMap = {
@@ -29,6 +45,8 @@ const App = () => {
     green: { bg: "bg-green-500", active: "bg-green-600" },
     purple: { bg: "bg-purple-500", active: "bg-purple-600" },
     orange: { bg: "bg-orange-500", active: "bg-orange-600" },
+    yellow: { bg: "bg-yellow-500", active: "bg-yellow-600" },
+    pink: { bg: "bg-pink-500", active: "bg-pink-600" },
   };
 
   return (
@@ -42,12 +60,11 @@ const App = () => {
           <button
             key={btn.key}
             onClick={() => setActivePanel(btn.key)}
-            className={`px-6 py-3 rounded-lg text-white font-semibold transition-all duration-200 transform
-              ${
-                activePanel === btn.key
-                  ? `${colorMap[btn.color].active} shadow-lg scale-105`
-                  : `${colorMap[btn.color].bg} hover:${colorMap[btn.color].active}`
-              }`}
+            className={`px-6 py-3 rounded-lg text-white font-semibold transition-all duration-200 transform ${
+              activePanel === btn.key
+                ? `${colorMap[btn.color].active} shadow-lg scale-105`
+                : `${colorMap[btn.color].bg} hover:${colorMap[btn.color].active}`
+            }`}
           >
             {btn.label}
           </button>
