@@ -1,0 +1,122 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "type": "graph",
+      "title": "HTTP Request Count per Endpoint",
+      "targets": [
+        {
+          "expr": "sum by (handler) (http_request_duration_seconds_count)",
+          "legendFormat": "{{handler}}",
+          "interval": "",
+          "refId": "A"
+        }
+      ],
+      "xaxis": { "show": true },
+      "yaxis": { "show": true, "label": "Requests" },
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 6 }
+    },
+    {
+      "type": "graph",
+      "title": "HTTP Average Latency per Endpoint (s)",
+      "targets": [
+        {
+          "expr": "sum by (handler) (http_request_duration_seconds_sum) / sum by (handler) (http_request_duration_seconds_count)",
+          "legendFormat": "{{handler}}",
+          "interval": "",
+          "refId": "B"
+        }
+      ],
+      "xaxis": { "show": true },
+      "yaxis": { "show": true, "label": "Seconds" },
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 6 }
+    },
+    {
+      "type": "graph",
+      "title": "HTTP 95th Percentile Latency (/jobs/run_claim_summary)",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{handler='/jobs/run_claim_summary'}[1m])) by (le))",
+          "legendFormat": "95th percentile",
+          "interval": "",
+          "refId": "C"
+        }
+      ],
+      "xaxis": { "show": true },
+      "yaxis": { "show": true, "label": "Seconds" },
+      "gridPos": { "x": 0, "y": 6, "w": 12, "h": 6 }
+    },
+    {
+      "type": "graph",
+      "title": "Request Rate (per second)",
+      "targets": [
+        {
+          "expr": "rate(http_request_duration_seconds_count[1m])",
+          "legendFormat": "{{handler}}",
+          "interval": "",
+          "refId": "D"
+        }
+      ],
+      "xaxis": { "show": true },
+      "yaxis": { "show": true, "label": "Req/s" },
+      "gridPos": { "x": 12, "y": 6, "w": 12, "h": 6 }
+    },
+    {
+      "type": "graph",
+      "title": "Docker Container CPU Usage (%)",
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total[1m])) by (name) * 100",
+          "legendFormat": "{{name}}",
+          "interval": "",
+          "refId": "E"
+        }
+      ],
+      "xaxis": { "show": true },
+      "yaxis": { "show": true, "label": "CPU %" },
+      "gridPos": { "x": 0, "y": 12, "w": 12, "h": 6 }
+    },
+    {
+      "type": "graph",
+      "title": "Docker Container Memory Usage (MB)",
+      "targets": [
+        {
+          "expr": "container_memory_usage_bytes / 1024 / 1024",
+          "legendFormat": "{{name}}",
+          "interval": "",
+          "refId": "F"
+        }
+      ],
+      "xaxis": { "show": true },
+      "yaxis": { "show": true, "label": "MB" },
+      "gridPos": { "x": 12, "y": 12, "w": 12, "h": 6 }
+    },
+    {
+      "type": "stat",
+      "title": "Docker Container Status (Running/Stopped)",
+      "targets": [
+        {
+          "expr": "container_last_seen{name=~'.*'}",
+          "legendFormat": "{{name}}",
+          "refId": "G"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 18, "w": 24, "h": 3 }
+    }
+  ],
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": ["FastAPI", "Databricks", "Docker"],
+  "templating": { "list": [] },
+  "time": { "from": "now-1h", "to": "now" },
+  "timezone": "",
+  "title": "FastAPI + Databricks + Docker Monitoring",
+  "version": 1
+}
