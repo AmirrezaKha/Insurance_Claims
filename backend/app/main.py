@@ -8,7 +8,8 @@ from app.routes import (
     upload_routes,
     metrics_routes,
     databricks_routes,
-    databricks_jobs_routes
+    databricks_jobs_routes,
+    databricks_silver_dashboard
 )
 
 app = FastAPI(title="Databricks Pipeline API")
@@ -31,6 +32,7 @@ app.include_router(metrics_routes.router)
 app.include_router(databricks_routes.router)
 app.include_router(databricks_tables_routes.router)
 app.include_router(databricks_jobs_routes.router)
+app.include_router(databricks_silver_dashboard.router)
 
 @app.get("/")
 def root():
