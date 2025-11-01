@@ -4,7 +4,7 @@ from app.services.databricks_dashboard_service import get_insurance_data
 
 router = APIRouter()
 
-@router.get("/insurance-data")
+@router.get("/insurance-data-dashboard")
 def insurance_data(
     region: str = Query(None),
     segment: str = Query(None),

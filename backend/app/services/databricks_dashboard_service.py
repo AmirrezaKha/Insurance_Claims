@@ -1,4 +1,4 @@
-from app.core.databricks import execute_sql
+from app.core.databricks_client import execute_sql
 
 def get_insurance_data(filters: dict = None):
     base_query = """

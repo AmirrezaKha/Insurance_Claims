@@ -4,13 +4,30 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173,
     host: true, // required for Docker
+    port: 5173,
     proxy: {
-      "/upload": "http://fastapi:8001",
-      "/dbt": "http://fastapi:8001",
-      "/mlflow": "http://fastapi:8001",
-      "/databricks": "http://fastapi:8001",
+      // Forward all API requests to the backend container
+      '/upload': {
+        target: 'http://fastapi:8001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/dbt': {
+        target: 'http://fastapi:8001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/mlflow': {
+        target: 'http://fastapi:8001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/databricks': {
+        target: 'http://fastapi:8001',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });

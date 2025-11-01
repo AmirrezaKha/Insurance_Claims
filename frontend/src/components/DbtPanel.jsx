@@ -20,37 +20,38 @@ const DbtPanel = () => {
   };
 
   return (
-    <div className="p-6 bg-green-50 rounded-xl shadow-md">
-      <h2 className="text-xl font-bold mb-4 text-green-700">dbt Panel</h2>
-      <p className="text-gray-700 mb-4">
-        Run your dbt models and check results.
+    <div className="p-6 bg-green-50 dark:bg-green-900 rounded-xl shadow-md">
+      <h2 className="text-xl font-bold mb-4 text-green-700 dark:text-green-300">dbt Panel</h2>
+      <p className="text-gray-700 dark:text-gray-300 mb-4">
+        Führen Sie Ihre dbt-Modelle aus und überprüfen Sie die Ergebnisse.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <button
           onClick={() => runDbtCommand("run")}
-          className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+          className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 transition"
         >
-          Run Models
+          Modelle ausführen
         </button>
         <button
           onClick={() => runDbtCommand("compile")}
-          className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+          className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 transition"
         >
-          Compile Models
+          Modelle kompilieren
         </button>
         <button
           onClick={() => runDbtCommand("test")}
-          className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+          className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 transition"
         >
-          Test Models
+          Modelle testen
         </button>
       </div>
 
-      {loading && <p className="text-gray-700">Running dbt command...</p>}
+      {loading && <p className="text-gray-700 dark:text-gray-300">dbt-Befehl wird ausgeführt...</p>}
+
       {output && (
         <div
-          className="mt-4 p-4 bg-green-100 rounded-lg overflow-auto max-h-96"
+          className="mt-4 p-4 bg-green-100 dark:bg-green-800 rounded-lg overflow-auto max-h-96 text-gray-900 dark:text-gray-100"
           dangerouslySetInnerHTML={{ __html: output }}
         />
       )}

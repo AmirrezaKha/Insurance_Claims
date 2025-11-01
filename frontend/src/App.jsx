@@ -1,19 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Database,
+  Table2,
+  Workflow,
+  LineChart,
+  FileBarChart,
+  Layers,
+  BarChart3,
+  Sun,
+  Moon,
+} from "lucide-react";
+
 import DbtPanel from "./components/DbtPanel.jsx";
 import TablesPanel from "./components/TablesPanel.jsx";
 import DatabricksQuery from "./components/DatabricksQuery.jsx";
 import DatabricksJobsPanel from "./components/DatabricksJobsPanel.jsx";
-import AirflowPanel from "./components/AirflowPanel.jsx";
 import ClaimSummaryPanel from "./components/ClaimSummaryPanel.jsx";
+import InsuranceDashboard from "./components/DashboardPanel.jsx";
 
+const panels = [
+  { key: "dbt", label: "dbt", icon: <Layers className="w-5 h-5" /> },
+  { key: "tables", label: "Tabellen", icon: <Table2 className="w-5 h-5" /> },
+  { key: "databricks", label: "Abfragen", icon: <Database className="w-5 h-5" /> },
+  { key: "jobs", label: "Jobs", icon: <Workflow className="w-5 h-5" /> },
+  { key: "claimsummary", label: "Schadensübersicht", icon: <FileBarChart className="w-5 h-5" /> },
+  { key: "dashboard", label: "Dashboard", icon: <BarChart3 className="w-5 h-5" /> },
+];
 
 const App = () => {
   const [activePanel, setActivePanel] = useState("dbt");
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) document.documentElement.classList.add("dark");
+    else document.documentElement.classList.remove("dark");
+  }, [darkMode]);
 
   const renderPanel = () => {
     switch (activePanel) {
-      // case "upload":
-      //   return <UploadForm />;
       case "dbt":
         return <DbtPanel />;
       case "tables":
@@ -24,60 +49,78 @@ const App = () => {
         return <DatabricksJobsPanel />;
       case "claimsummary":
         return <ClaimSummaryPanel />;
+      case "dashboard":
+        return <InsuranceDashboard />;
       default:
         return <DbtPanel />;
-      // case "airflow":
-      //   return <AirflowPanel />;
     }
   };
 
-  const buttons = [
-    // { key: "upload", label: "Upload", color: "blue" }, // commented out
-    { key: "dbt", label: "dbt", color: "green" },
-    { key: "tables", label: "Tables", color: "purple" },
-    { key: "databricks", label: "Databricks", color: "orange" },
-    { key: "jobs", label: "Jobs", color: "yellow" },
-    { key: "claimsummary", label: "Claim Summary Panel", color: "pink" },
-  ];
-
-  const colorMap = {
-    blue: { bg: "bg-blue-500", active: "bg-blue-600" },
-    green: { bg: "bg-green-500", active: "bg-green-600" },
-    purple: { bg: "bg-purple-500", active: "bg-purple-600" },
-    orange: { bg: "bg-orange-500", active: "bg-orange-600" },
-    yellow: { bg: "bg-yellow-500", active: "bg-yellow-600" },
-    pink: { bg: "bg-pink-500", active: "bg-pink-600" },
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 text-gray-900 flex flex-col">
-      <header className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 text-center text-3xl font-bold shadow-md">
-        Databricks Control Panel
-      </header>
-
-      <nav className="flex justify-center flex-wrap gap-4 mt-6">
-        {buttons.map((btn) => (
+    <div className="flex h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-r border-gray-200 dark:border-gray-700 flex flex-col shadow-lg">
+        <div className="p-6 text-center border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Databricks
+          </h1>
           <button
-            key={btn.key}
-            onClick={() => setActivePanel(btn.key)}
-            className={`px-6 py-3 rounded-lg text-white font-semibold transition-all duration-200 transform ${
-              activePanel === btn.key
-                ? `${colorMap[btn.color].active} shadow-lg scale-105`
-                : `${colorMap[btn.color].bg} hover:${colorMap[btn.color].active}`
-            }`}
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:scale-110 transition-transform"
+            title="Thema wechseln"
           >
-            {btn.label}
+            {darkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-gray-600" />}
           </button>
-        ))}
-      </nav>
+        </div>
 
-      <main className="flex-grow p-6 max-w-6xl mx-auto mt-8 bg-white shadow-xl rounded-2xl transition-all">
-        {renderPanel()}
+        <nav className="flex-1 p-4 space-y-2">
+          {panels.map((item) => (
+            <button
+              key={item.key}
+              onClick={() => setActivePanel(item.key)}
+              className={`flex items-center gap-3 w-full px-4 py-3 text-left rounded-xl font-medium transition-all duration-200 ${
+                activePanel === item.key
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md"
+                  : "hover:bg-blue-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
+              }`}
+            >
+              {item.icon}
+              {item.label}
+            </button>
+          ))}
+        </nav>
+
+        <footer className="text-center p-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+          © 2025 Databricks Steuerungs-Panel
+        </footer>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 p-8 overflow-y-auto">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-semibold tracking-tight capitalize">
+            {activePanel === "claimsummary" ? "Schadensübersicht" :
+             activePanel === "tables" ? "Tabellen" :
+             activePanel === "databricks" ? "Abfragen" :
+             activePanel === "jobs" ? "Jobs" :
+             activePanel === "dashboard" ? "Dashboard" :
+             "dbt"}
+          </h2>
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activePanel}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-xl rounded-2xl p-8 border border-gray-100 dark:border-gray-700"
+          >
+            {renderPanel()}
+          </motion.div>
+        </AnimatePresence>
       </main>
-
-      <footer className="text-center text-gray-500 py-4 mt-10">
-        &copy; 2025 Databricks Control Panel. All rights reserved.
-      </footer>
     </div>
   );
 };
